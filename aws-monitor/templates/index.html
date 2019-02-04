@@ -1,0 +1,11 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {% for reservation in instances.Reservations %}
+           {% for instance in reservation.Instances %}
+           <p>{{ instance.ImageId }}</p>
+           {% endfor %}
+        {% endfor %}
+    </body>
+</html>

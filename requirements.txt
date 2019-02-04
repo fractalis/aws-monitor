@@ -1,0 +1,4 @@
+flask==1.0
+boto3==1.9.86
+flask_admin==1.5.3
+Flask-SQLAlchemy==2.3.1
