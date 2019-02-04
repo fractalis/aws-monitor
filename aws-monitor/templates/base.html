@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{ super() }}
+    {% assets "scss_all" %}
+        <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+    {% endassets %}
+{% endblock %}
+
+<title>{% block title %}{% endblock %} - AWS Monitor</title>
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+    Navbar
+</div>
+{% endblock %}
+
+<section class="content">
+    {% block content %}{% endblock %}
+</section>

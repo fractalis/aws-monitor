@@ -1,11 +1,25 @@
-<html>
-    <head>
-    </head>
-    <body>
-        {% for reservation in instances.Reservations %}
-           {% for instance in reservation.Instances %}
-           <p>{{ instance.ImageId }}</p>
-           {% endfor %}
-        {% endfor %}
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ImageId</th>
+                <th scope="col">InstanceId</th>
+                <th scope="col">PrivateDnsName</th>
+                <th scope="col">PrivateIpAddress</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for reservation in instances.Reservations %}
+      {% for instance in reservation.Instances %}
+        <tr>
+            <th scope="row">{{ instance.ImageId }}</th>
+            <td>{{instance.InstanceId}}</td>
+            <td>{{instance.PrivateDnsName}}</td>
+            <td>{{instance.PrivateIpAddress}}</td>
+        </tr>
+      {% endfor %}
+        </tbody>
+    {% endfor %}
+{% endblock %}
