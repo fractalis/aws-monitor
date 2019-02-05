@@ -21,9 +21,17 @@ Bootstrap(app)
 
 
 @app.route('/')
-def hello():
+def index():
     ec2 = boto3.client('ec2')
 
     instances = ec2.describe_instances()
+    addresses = ec2.describe_addresses()
 
-    return render_template('index.html', instances=instances)
+    return render_template('index.html', instances=instances, addresses=addresses)
+
+@app.route('/instance/<instance>')
+def instance(instance):
+    ec2 = boto3.resource('ec2')
+    instance = ec2.Instance(instance)
+
+    return render_template('instance.html', instance=instance)

@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block maincontent %}
+
+<div class="row">
+    <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+            <table class="table table-responsive-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Architecture</td>
+                        <td>{{instance.architecture}}</td>
+                    </tr>
+                    <tr>
+                        <td>ImageID</td>
+                        <td>{{instance.image_id}}</td>
+                    </tr>
+                    <tr>
+                        <td>InstanceID</td>
+                        <td>{{instance.instance_id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Instance Type</td>
+                        <td>{{instance.instance_type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

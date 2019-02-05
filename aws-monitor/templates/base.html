@@ -5,16 +5,36 @@
     {% assets "scss_all" %}
         <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
     {% endassets %}
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='css/style.min.css')}}">
 {% endblock %}
 
-<title>{% block title %}{% endblock %} - AWS Monitor</title>
+{% block body_attribs %} class="app sidebar-show sidebar-compact aside-menu-show" {% endblock %}
 
-{% block navbar %}
-<div class="navbar navbar-fixed-top">
-    Navbar
+{% block content %}
+<header class="app-header navbar">
+	Header Content
+</header>
+<div class="app-body">
+	<div class="sidebar">
+		Sidebar Content
+	</div>
+
+	<main class="main">
+		<div class="container-fluid">
+			{% block maincontent %}
+			{% endblock %}
+		</div>
+	</main>
+	<aside class="aside-menu">
+		Aside Menu Content
+	</aside>
 </div>
+<footer class="app-footer">
+	Footer Content
+</footer>
 {% endblock %}
 
-<section class="content">
-    {% block content %}{% endblock %}
-</section>
+{% block scripts %}
+{{super()}}
+<script type="text/javascript" src="{{url_for('static', filename='js/coreui.min.js')}}"></script>
+{% endblock %}

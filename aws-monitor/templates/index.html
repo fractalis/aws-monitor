@@ -1,25 +1,61 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ImageId</th>
-                <th scope="col">InstanceId</th>
-                <th scope="col">PrivateDnsName</th>
-                <th scope="col">PrivateIpAddress</th>
-            </tr>
-        </thead>
-        <tbody>
-    {% for reservation in instances.Reservations %}
-      {% for instance in reservation.Instances %}
-        <tr>
-            <th scope="row">{{ instance.ImageId }}</th>
-            <td>{{instance.InstanceId}}</td>
-            <td>{{instance.PrivateDnsName}}</td>
-            <td>{{instance.PrivateIpAddress}}</td>
-        </tr>
-      {% endfor %}
-        </tbody>
-    {% endfor %}
+{% block maincontent %}
+    <div class="row">
+        <div class="card text-white bg-primary">
+            <div class="card-body pb-0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ImageId</th>
+                            <th scope="col">InstanceId</th>
+                            <th scope="col">PrivateDnsName</th>
+                            <th scope="col">PrivateIpAddress</th>
+                            <th scope="col">PublicIpAddress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% for reservation in instances.Reservations %}
+                  {% for instance in reservation.Instances %}
+                    <tr>
+                        <th scope="row">{{ instance.ImageId }}</th>
+                        <td>{{instance.InstanceId}}</td>
+                        <td>{{instance.PrivateDnsName}}</td>
+                        <td>{{instance.PrivateIpAddress}}</td>
+                        <td>{{instance.PublicIpAddress}}</td>
+                    </tr>
+                  {% endfor %}
+                    </tbody>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="card text-white bg-secondary">
+            <div class="card-title">
+                Elastic IPs
+            </div>
+            <div class="card-body pb-0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">InstanceID</th>
+                            <th scope="col">PublicIP</th>
+                            <th scope="col">PrivateIP</th>
+                            <th scope="col">Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for address in addresses.Addresses %}
+                    <tr>
+                        <th scope="row">{{address.InstanceId}}</th>
+                        <td>{{address.PublicIp}}</td>
+                        <td>{{address.PrivateIpAddress}}</td>
+                        <td>{{address.Tags}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
